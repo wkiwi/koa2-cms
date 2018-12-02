@@ -1,29 +1,26 @@
 /*
-* @Author: Wkiwi
-* @Date:   2018-11-05 11:23:07
-* @Last Modified by:   Wkiwi
-* @Last Modified time: 2018-11-15 16:08:10
-*/
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2018-11-17 14:44:05
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2018-11-23 17:26:37
+ */
+
+ 
 /*
-mysql curdÓï¾ä
-
- mysqlÔö¼ÓÊı¾İ£º
-
+mysql curdè¯­å¥
+ mysqlå¢åŠ æ•°æ®ï¼š
        INSERT INTO user (username,password) value ('zhangsan','123456')
-
- mysqlĞŞ¸ÄÊı¾İ£º
+ mysqlä¿®æ”¹æ•°æ®ï¼š
          update user set username='zhangsan',`password`='123456'  where id=2
-
- mysqlÉ¾³ıÊı¾İ£º
+ mysqlåˆ é™¤æ•°æ®ï¼š
         DELETE from user WHERE id=3
-
- mysql²éÑ¯Êı¾İ£º
+ mysqlæŸ¥è¯¢æ•°æ®ï¼š
         SELECT * from `user` where username='admin'
-
 */
 var mysql = require('mysql');
 
-//½¨Á¢Á¬½ÓµÄ·½·¨
+//å»ºç«‹è¿æ¥çš„æ–¹æ³•
 
 
 function __connection(){
@@ -31,7 +28,7 @@ function __connection(){
     var connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
-        password : 'root',
+        password : 'root123',
         database : 'koacms'
     });
     connection.connect();
@@ -40,19 +37,17 @@ function __connection(){
 
 exports.query=function(sql,parmas=null){
 
-        //1.»ñÈ¡Êı¾İ¿âÁ¬½Ó¶ÔÏó
+        //1.è·å–æ•°æ®åº“è¿æ¥å¯¹è±¡
         var connection=__connection();
         return new Promise(function(reject,resolve){
 
-            //2¡¢Ö´ĞĞsqlÓï¾ä
+            //2ã€æ‰§è¡Œsqlè¯­å¥
             connection.query(sql,parmas, function (error, results, fields) {
                 if (error) throw error;
                 reject(results);
 
             });
-            //3¡¢¹Ø±ÕÁ¬½Ó
+            //3ã€å…³é—­è¿æ¥
             connection.end();
         })
 }
-
-

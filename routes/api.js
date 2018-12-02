@@ -1,13 +1,15 @@
 /*
-* @Author: Wkiwi
-* @Date:   2018-11-05 11:23:07
-* @Last Modified by:   Wkiwi
-* @Last Modified time: 2018-11-15 16:33:54
-*/
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2018-11-17 14:44:05
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2018-12-01 20:46:54
+ */
 
 var router=require('koa-router')();
 var DB=require('../module/mysqlDB.js');
 var url= require('url');
+var http = require('http');
 
 router.get('/',async(ctx)=>{
     ctx.body={'title':'这是一个api接口'};
@@ -16,12 +18,12 @@ router.get('/',async(ctx)=>{
 router.get('/select',async (ctx)=>{
     var sql='select * from user';
     var result=await DB.query(sql);
-
-    await ctx.render('index',{
-
-        list:result
-    })
-    //console.log(result);
+    ctx.body=result;
+    console.log(result.length)
+    console.log(result);
+    // await ctx.render('./api/index',{
+    //     list:result
+    // })
 })
 
 router.get('/add',async (ctx)=>{

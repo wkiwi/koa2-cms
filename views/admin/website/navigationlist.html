@@ -1,0 +1,136 @@
+{{include '../../public/header.html'}}
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        {{include '../../public/nav_left.html'}}
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            {{include '../../public/nav_top.html'}}
+            <div class="row J_mainContent" id="content-main">
+                <!--右侧内容开始-->
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>基本 <small>分类，查找</small></h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">名称</th>
+                                                <th class="text-center">链接地址</th>
+                                                <th class="text-center">排序</th>
+                                                <th class="text-center">所属分类</th>
+                                                <th class="text-center">状态</th>
+                                                <th class="text-center">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{each list}}
+                                            <tr class="gradeX">
+                                                <td class="text-center">{{$value.title}}</td>
+                                                <td class="text-center">{{$value.link}}</td>
+                                                <td class="text-center">{{$value.sort}}</td>
+                                                <td class="text-center">{{$value.classify==0?"一级分类":$value.father}}</td>
+                                                <td class="text-center">
+                                                    {{if $value.type == 1}}
+                                                    <button onclick="app.toggle(this,'nav','type','{{$value.id}}')" class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i></button>
+                                                    {{/if}}
+                                                    {{if $value.type == 0}}
+                                                    <button onclick="app.toggle(this,'nav','type','{{$value.id}}')" class="btn btn-warning btn-circle" type="button" ><i class="fa fa-times"></i></button>
+                                                    {{/if}}
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="btn-group">
+                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">置顶</a>
+                                                        </li>
+                                                        <li><a href="#">修改</a>
+                                                        </li>
+                                                        <li onclick="app.forbidden(this,'nav','type','{{$value.id}}')"><a href="#">{{if $value.type == 1}}禁用{{/if}} {{if $value.type == 0}}启用{{/if}}</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li onclick="app.confirmDelete()"><a class="delete"  href="{{__HOST__}}/admin/remove?collection=nav&id={{$value.id}}">删除</a></li>
+                                                    </ul>
+                                                </div></td>
+                                            </tr>
+                                                {{each $value.list}}
+                                                <tr class="gradeX">
+                                                    <td class="text-center">{{$value.title}}</td>
+                                                    <td class="text-center">{{$value.link}}</td>
+                                                    <td class="text-center">{{$value.sort}}</td>
+                                                    <td class="text-center">{{$value.classify==0?"一级分类":$value.father}}</td>
+                                                    <td class="text-center">
+                                                        {{if $value.type == 1}}
+                                                        <button onclick="app.toggle(this,'nav','type','{{$value.id}}')" class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i></button>
+                                                        {{/if}}
+                                                        {{if $value.type == 0}}
+                                                        <button onclick="app.toggle(this,'nav','type','{{$value.id}}')" class="btn btn-warning btn-circle" type="button" ><i class="fa fa-times"></i></button>
+                                                        {{/if}}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">置顶</a>
+                                                            </li>
+                                                            <li><a href="{{__HOST__}}/admin/website/nav/edit?collection=nav&id={{$value.id}}">修改</a>
+                                                            </li>
+                                                            <li onclick="app.forbidden(this,'nav','type','{{$value.id}}')"><a href="#">{{if $value.type == 1}}禁用{{/if}} {{if $value.type == 0}}启用{{/if}}</a>
+                                                            </li>
+                                                            <li class="divider"></li>
+                                                            <li onclick="app.confirmDelete()"><a class="delete"  href="{{__HOST__}}/admin/remove?collection=nav&id={{$value.id}}">删除</a></li>
+                                                        </ul>
+                                                    </div></td>
+                                                </tr>
+                                                {{/each}}
+                                            {{/each}}
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th class="text-center">名称</th>
+                                                <th class="text-center">链接地址</th>
+                                                <th class="text-center">排序</th>
+                                                <th class="text-center">所属分类</th>
+                                                <th class="text-center">状态</th>
+                                                <th class="text-center">操作</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧内容结束-->
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+    
+    
+    <!-- 全局js -->
+    <script src="{{__HOST__}}/admin/js/jquery.min.js?v=2.1.4"></script>
+    <script src="{{__HOST__}}/admin/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Data Tables -->
+    <script src="{{__HOST__}}/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <!-- 自定义js -->
+    <script src="{{__HOST__}}/admin/js/hAdmin.js?v=4.1.0"></script>
+    <script src="{{__HOST__}}/admin/js/content.js?v=1.0.0"></script>
+    <script src="{{__HOST__}}/admin/js/base.js?v=1.0.0"></script>
+    <script>
+        $(function(){
+            $('.dataTables-example').dataTable();
+        })
+    </script>
+</body>
+
+</html>

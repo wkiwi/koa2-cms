@@ -1,0 +1,98 @@
+{{include '../../public/header.html'}}
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        {{include '../../public/nav_left.html'}}
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            {{include '../../public/nav_top.html'}}
+            <div class="row J_mainContent" id="content-main">
+                <!--右侧内容开始-->
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>添加轮播图 <small>幻灯片</small></h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <form method="get" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">名称</label>
+                
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">排序</label>
+                
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">轮播图片</label>
+                
+                                            <div class="col-sm-10">
+                                                <input type="file" >
+                                                <div class="img-wrapper" style="height:100px;width:100%;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                                <label class="col-sm-2 control-label">链接地址</label>
+                
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">状态</label>
+                
+                                            <div class="col-sm-10">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">未审核</label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">已审核</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <button class="btn btn-primary" type="submit">保存内容</button>
+                                                <button class="btn btn-white" type="submit">取消</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧内容结束-->
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+
+    <!-- 全局js -->
+    <script src="{{__HOST__}}/admin/js/jquery.min.js?v=2.1.4"></script>
+    <script src="{{__HOST__}}/admin/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="{{__HOST__}}/admin/js/hAdmin.js?v=4.1.0"></script>
+    <!-- <script type="text/javascript" src="{{__HOST__}}/admin/js/index.js"></script> -->
+
+    <!-- 第三方插件 -->
+    <!-- <script src="{{__HOST__}}/admin/js/plugins/pace/pace.min.js"></script> -->
+</body>
+
+</html>

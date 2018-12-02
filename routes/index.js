@@ -1,9 +1,10 @@
 /*
-* @Author: Wkiwi
-* @Date:   2018-11-05 11:23:07
-* @Last Modified by:   Wkiwi
-* @Last Modified time: 2018-11-05 14:58:47
-*/
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2018-11-17 14:44:05
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2018-11-23 17:25:20
+ */
 
 var router=require('koa-router')();
 var DB=require('../module/mysqlDB.js');

@@ -1,0 +1,31 @@
+<!--右侧顶部nav部分开始-->
+<div class="row border-bottom">
+  <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+          <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+              <div class="form-group">
+                  <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+              </div>
+          </form>
+      </div>
+      <ul class="nav navbar-top-links navbar-right">
+          <li class="dropdown">
+              <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <img alt="image" style="height:32px;width:32px;" class="img-circle" src="{{__HOST__}}/admin/img/a3.jpg">
+                    {{if G.userinfo}}<span class="">Hi,{{G.userinfo.user_name}}</span>{{/if}}
+                  <!-- <i class="fa fa-envelope"></i> <span class="label label-warning">16</span> -->
+              </a>
+              <ul class="dropdown-menu">
+                  <li class="m-t-xs ">
+                        <a href="#" ><i class="fa fa-user"></i> 我的资料</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li >
+                        <a href="{{__HOST__}}/admin/login/loginOut"><i class="fa fa-sign-out"></i> 退出</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </nav>
+</div>
+<!--右侧顶部nav部分结束-->

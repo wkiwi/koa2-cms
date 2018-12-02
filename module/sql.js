@@ -1,18 +1,12 @@
 /*
-* @Author: Wkiwi
-* @Date:   2018-11-15 16:08:31
-* @Last Modified by:   Wkiwi
-* @Last Modified time: 2018-11-15 16:11:12
-*/
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2018-11-17 14:44:05
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2018-11-23 17:26:25
+ */
+
 /************常用sql***************/
-//数据表sql
-// 创建数据库
-CREATE TABLE IF NOT EXISTS user(
-    id INT(5) NOT NULL AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
-);
 
 // 查询数据表
 const QUERY_TABLE = (tableName) => `SELECT * FROM ${tableName};`

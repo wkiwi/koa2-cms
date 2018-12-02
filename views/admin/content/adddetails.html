@@ -1,0 +1,161 @@
+{{include '../../public/header.html'}}
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        {{include '../../public/nav_left.html'}}
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            {{include '../../public/nav_top.html'}}
+            <div class="row J_mainContent" id="content-main">
+                <!--右侧内容开始-->
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>添加内容 <small>增加内容</small></h5>
+                            </div>
+                            <div class="ibox-content">
+                                <form method="get" class="form-horizontal">
+                                    <div class="panel blank-panel">
+                
+                                        <div class="panel-heading">
+                                            <div class="panel-title m-b-md">
+                                                <h4>填写信息</h4>
+                                            </div>
+                                            <div class="panel-options">
+                    
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-list"></i>基本内容</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-file-text"></i>内容设置</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-3"><i class="fa fa-link"></i>seo设置</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="panel-body">
+                                            <div class="tab-content">
+                                                <div id="tab-1" class="tab-pane active">
+                                                    <div class="form-group">
+                                                            <label class="col-sm-2 control-label">所属分类</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="form-control m-b" name="account">
+                                                                    <option>选项 1</option>
+                                                                    <option>选项 2</option>
+                                                                    <option>选项 3</option>
+                                                                    <option>选项 4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">标题</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">封面图</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <input type="file" >
+                                                                <div class="img-wrapper" style="height:100px;width:100%;"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">作者信息</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control"> <span class="help-block m-b-none">多位作者以英文,分隔</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">状态</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <div class="radio col-sm-2">
+                                                                    <label>
+                                                                        <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">未审核</label>
+                                                                </div>
+                                                                <div class="radio col-sm-2">
+                                                                    <label>
+                                                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">已审核</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">加入推荐</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <label class="checkbox-inline">
+                                                                    <input type="checkbox" value="option1" id="inlineCheckbox1">精品</label>
+                                                                <label class="checkbox-inline">
+                                                                    <input type="checkbox" value="option2" id="inlineCheckbox2">热品</label>
+                                                                <label class="checkbox-inline">
+                                                                    <input type="checkbox" value="option3" id="inlineCheckbox3">上新</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">版权信息</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-4 col-sm-offset-2">
+                                                                <button class="btn btn-primary" type="submit">保存内容</button>
+                                                                <button class="btn btn-white" type="submit">取消</button>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                    
+                                                <div id="tab-2" class="tab-pane">
+                                                    <div class="hr-line-dashed"></div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">网站描述</label>
+                        
+                                                        <div class="col-sm-10">
+                                                            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hr-line-dashed"></div>
+                                                </div>
+                                                <div id="tab-3" class="tab-pane">
+                                                    <strong>布局容器</strong>
+                    
+                                                    <p>Bootstrap 需要为页面内容和栅格系统包裹一个 .container 容器。我们提供了两个作此用处的类。注意，由于 padding 等属性的原因，这两种 容器类不能互相嵌套。</p>
+                                                </div>
+                                            </div>
+                    
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧内容结束-->
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+
+    <!-- 全局js -->
+    <script src="{{__HOST__}}/admin/js/jquery.min.js?v=2.1.4"></script>
+    <script src="{{__HOST__}}/admin/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="{{__HOST__}}/admin/js/hAdmin.js?v=4.1.0"></script>
+    <!-- <script type="text/javascript" src="{{__HOST__}}/admin/js/index.js"></script> -->
+
+    <!-- 第三方插件 -->
+    <!-- <script src="{{__HOST__}}/admin/js/plugins/pace/pace.min.js"></script> -->
+</body>
+
+</html>
