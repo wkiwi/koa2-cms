@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-17 14:44:05
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-02 18:31:38
+ * @LastEditTime: 2018-12-06 20:10:36
  */
 var router=require('koa-router')();
 
@@ -82,6 +82,10 @@ router.get('/remove',async(ctx)=>{//删除该行信息
       console.log(sql)
       var result=await DB.query(sql);
       console.log(result);
+      if(collection == 'article') {//如果删除的是文章，则同时删除关联表recommend数据
+        let sql='delete from `recommend` where article_id = '+id;
+        let result=await DB.query(sql);
+      }
       ctx.redirect(ctx.state.G.prevPage)
   }catch(err){
       ctx.redirect(ctx.state.G.prevPage)

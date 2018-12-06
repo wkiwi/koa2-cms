@@ -15,26 +15,26 @@
                                     <h5>站点设置 <small>标题、关键词、LOGO、网站描述......</small></h5>
                                 </div>
                                 <div class="ibox-content">
-                                    <form method="get" class="form-horizontal">
+                                    <form method="post" class="form-horizontal" action="{{__HOST_}}/admin/user/doadd">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">账号</label>
                 
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="user_name">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">密码</label>
                 
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="pass_word">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">确认密码</label>
                 
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="r_pass_word">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -43,23 +43,23 @@
                                             <div class="col-sm-10">
                                                 <div class="radio col-sm-2 ">
                                                     <label>
-                                                        <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios">未审核用户</label>
+                                                        <input type="radio" checked="" value="0"  name="user_type">未审核用户</label>
                                                 </div>
                                                 <div class="radio col-sm-2 ">
                                                     <label>
-                                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">超级管理员</label>
+                                                        <input type="radio" value="1"  name="user_type">超级管理员</label>
                                                 </div>
                                                 <div class="radio col-sm-2 ">
                                                     <label>
-                                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">普通管理员</label>
+                                                        <input type="radio" value="2"  name="user_type">普通管理员</label>
                                                 </div>
                                                 <div class="radio col-sm-2 ">
                                                     <label>
-                                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">vip用户</label>
+                                                        <input type="radio" value="3"  name="user_type">vip用户</label>
                                                 </div>
                                                 <div class="radio col-sm-2 ">
                                                     <label>
-                                                        <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">普通用户</label>
+                                                        <input type="radio" value="4"  name="user_type">普通用户</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                                             <label class="col-sm-2 control-label">人员扩展信息</label>
                 
                                             <div class="col-sm-10">
-                                                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                                                <textarea cols="30" rows="10" class="form-control" name="user_extend"></textarea>
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>
@@ -102,7 +102,30 @@
     <!-- <script type="text/javascript" src="{{__HOST__}}/admin/js/index.js"></script> -->
 
     <!-- 第三方插件 -->
-    <!-- <script src="{{__HOST__}}/admin/js/plugins/pace/pace.min.js"></script> -->
+    <script src="{{__HOST__}}/admin/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "positionClass": "toast-top-center",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            // setTimeout(()=>{
+            //     toastr.err('23123123231231231');
+            // },2000)
+            
+        })
+    </script>
 </body>
 
 </html>

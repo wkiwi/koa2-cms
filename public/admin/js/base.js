@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-12-02 17:22:05
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-02 18:27:14
+ * @LastEditTime: 2018-12-06 21:47:56
  */
 
 
@@ -38,9 +38,7 @@ var app={
       })
   },
   confirmDelete:function(){
-      console.log(123)
       $(".delete").click(function(){
-          console.log(123)
           var flag=confirm("你确定要删除吗？")
           return flag;
       })
@@ -48,7 +46,6 @@ var app={
   changeSort:function(el,collectionName,id){
       var sortValue=el.value;
       $.get('/admin/changeSort',{collectionName:collectionName,id:id,sortValue:sortValue},function(data){
-          console.log(data)
       })
   }
 

@@ -1,5 +1,4 @@
 /*     数据表sql      */
-/*     创建数据库     */
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -43,33 +42,72 @@ CREATE TABLE `nav` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='导航栏信息';
 
--- DROP TABLE IF EXISTS `sort`;
--- CREATE TABLE `sort` (
---   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
---   `sort_name` char(50) NOT NULL DEFAULT '' COMMENT '分类名称',
---   `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类父ID',
---   `sort_type` char(10) NOT NULL DEFAULT '' COMMENT '分类类别（可定制成新闻、文章、教程等）',
---   PRIMARY KEY (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章分类表';
 
--- DROP TABLE IF EXISTS `article`;
--- CREATE TABLE `article` (
---   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
---   `sort_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类ID',
---   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
---   `title` char(100) NOT NULL DEFAULT '' COMMENT '文章标题',
---   `description` char(255) NOT NULL DEFAULT '' COMMENT '文章描述',
---   `thumbnail` char(255) NOT NULL DEFAULT '' COMMENT '缩略图(新增)',
---   `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '文章内容',
---   `passed` int(1) NOT NULL DEFAULT '0' COMMENT '审核状态',
---   `read_type` tinyint NOT NULL DEFAULT '0' COMMENT '阅读权限（参阅用户类型）',
---   `create_time` TIMESTAMP(6) not NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '发表时间',
---   `update_time` TIMESTAMP(6) not NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6) COMMENT '修改时间',
---   `article_extend` text CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '扩展信息',
---   PRIMARY KEY (`id`),
---   KEY `sort_id` (`sort_id`) USING BTREE,
---   KEY `user_id` (`user_id`) USING BTREE
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章数据库表';
+DROP TABLE IF EXISTS `banner`;
+CREATE TABLE `banner` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` char(255) NOT NULL DEFAULT '' COMMENT '导航名称',
+  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `pic` char(255) NOT NULL DEFAULT '' COMMENT '轮播图片地址',
+  `link` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '审核状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='轮播图组';
+
+DROP TABLE IF EXISTS `link`;
+CREATE TABLE `link` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` char(255) NOT NULL DEFAULT '' COMMENT '链接名称',
+  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `pic` char(255) NOT NULL DEFAULT '' COMMENT '链接LOGO',
+  `link` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '审核状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='友情链接';
+
+
+DROP TABLE IF EXISTS `classify`;
+CREATE TABLE `classify` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` char(255) NOT NULL DEFAULT '' COMMENT '分类名称',
+  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `keywords` char(255) NOT NULL DEFAULT '' COMMENT '关键字',
+  `classify` int(10) NOT NULL DEFAULT '0' COMMENT '上级分类',
+  `description` char(255) NOT NULL DEFAULT '' COMMENT '分类描述',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '审核状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='内容分类';
+
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE `article` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `classify` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类ID',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
+  `title` char(100) NOT NULL DEFAULT '' COMMENT '文章标题',
+  `author` char(100) NOT NULL DEFAULT '' COMMENT '作者',
+  `copyright` char(100) NOT NULL DEFAULT '' COMMENT '版权',
+  `keywords` char(100) NOT NULL DEFAULT '' COMMENT '关键字',
+  `description` char(255) NOT NULL DEFAULT '' COMMENT '文章描述',
+  `thumbnail` char(255) NOT NULL DEFAULT '' COMMENT '缩略图(新增)',
+  `recommend` char(100) NOT NULL DEFAULT '' COMMENT '推荐分类',
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '文章内容',
+  `type` int(1) NOT NULL DEFAULT '0' COMMENT '审核状态',
+  `read_type` tinyint NOT NULL DEFAULT '0' COMMENT '阅读权限（参阅用户类型）',
+  `create_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '发表时间',
+  `update_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
+  `article_extend` text CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '扩展信息',
+  PRIMARY KEY (`id`),
+  KEY `classify` (`classify`) USING BTREE,
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章数据库表';
+
+DROP TABLE IF EXISTS `recommend`;
+CREATE TABLE `recommend` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章id',
+  `sort_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章推荐类型 1:精品;2:热品;3:新品',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章推荐类型关联表';
 
 -- DROP TABLE IF EXISTS `upload`;
 -- CREATE TABLE `upload` (

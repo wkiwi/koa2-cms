@@ -1,0 +1,192 @@
+{{include '../../public/header.html'}}
+<script type="text/javascript" charset="utf-8" src="{{__HOST__}}/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="{{__HOST__}}/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="{{__HOST__}}/ueditor/lang/zh-cn/zh-cn.js"></script>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        {{include '../../public/nav_left.html'}}
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            {{include '../../public/nav_top.html'}}
+            <div class="row J_mainContent" id="content-main">
+                <!--右侧内容开始-->
+                <div class="wrapper wrapper-content animated fadeInRight">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>添加内容 <small>增加内容</small></h5>
+                            </div>
+                            <div class="ibox-content">
+                                <form method="post" action="{{__HOST__}}/admin/content/doedit" class="form-horizontal" enctype="multipart/form-data" >
+                                    <div class="panel blank-panel">
+                
+                                        <div class="panel-heading">
+                                            <div class="panel-title m-b-md">
+                                                <h4>填写信息</h4>
+                                            </div>
+                                            <div class="panel-options">
+                    
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-list"></i>基本内容</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-file-text"></i>内容设置</a>
+                                                    </li>
+                                                    <li class=""><a data-toggle="tab" href="#tab-3"><i class="fa fa-link"></i>seo设置</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="panel-body">
+                                            <div class="tab-content">
+                                                <div id="tab-1" class="tab-pane active">
+                                                    <div class="form-group">
+                                                            <label class="col-sm-2 control-label">所属分类</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="form-control m-b" name="classify">
+                                                                    <option value="0">暂无分类</option>
+                                                                    {{each options}}
+                                                                    <option value="{{$value.id}}" {{if list.classify==$value.id}} selected {{/if}} >{{$value.title}}</option>
+                                                                    {{each $value.list}}
+                                                                    <option value="{{$value.id}}" {{if list.classify==$value.id}} selected {{/if}} >———{{$value.title}}</option>
+                                                                    {{/each}}
+                                                                    {{/each}}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">标题</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="title" value="{{list.title}}">
+                                                                <input type="hidden"  name="id" value="{{list.id}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">封面图</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <input type="file" name="thumbnail" >
+                                                                <div class="img-wrapper" style="height:100px;width:100%;">
+                                                                {{if list.thumbnail}} <img src="{{__HOST__}}/{{list.thumbnail}}" alt="封面图" style="height:100%;width:auto;"> {{/if}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">作者信息</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="author" value="{{list.author}}"> <span class="help-block m-b-none">多位作者以英文,分隔</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">状态</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <div class="radio col-sm-2">
+                                                                    <label>
+                                                                        <input type="radio"  {{if list.type==0}} checked {{/if}} value="0"  name="type">未审核</label>
+                                                                </div>
+                                                                <div class="radio col-sm-2">
+                                                                    <label>
+                                                                        <input type="radio" value="1"  name="type" {{if list.type==1}} checked {{/if}}>已审核</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">加入推荐</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <label class="checkbox-inline">
+                                                                    <input type="checkbox" value="1" name="recommend" {{each recommends data}} {{if data.sort_id==1 }} checked {{/if}} {{/each}}>精品</label>
+                                                                <label class="checkbox-inline">
+                                                                    <input type="checkbox" value="2" name="recommend" {{each recommends data}} {{if data.sort_id==2 }} checked {{/if}} {{/each}}>热品</label>
+                                                                <label class="checkbox-inline">
+                                                                    <input type="checkbox" value="3" name="recommend" {{each recommends data}} {{if data.sort_id==3 }} checked {{/if}} {{/each}}>上新</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2 control-label">版权信息</label>
+                            
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control" name="copyright" value="{{list.copyright}}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                </div>
+                    
+                                                <div id="tab-2" class="tab-pane">
+                                                    <div class="hr-line-dashed"></div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">文章内容</label>
+                        
+                                                        <div class="col-sm-10">
+                                                            <!-- <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea> -->
+                                                            <script name="content" id="editor" type="text/plain" style="width:auto;min-height:300px;"></script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hr-line-dashed"></div>
+                                                </div>
+                                                <div id="tab-3" class="tab-pane">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label"  >关键字</label>
+                        
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="keywords" value="{{list.keywords}}"><span class="help-block m-b-none">多个关键字以英文,分隔</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">描述</label>
+                        
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" name="description" value="{{list.description}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="hr-line-dashed"></div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-4 col-sm-offset-2">
+                                                            <button class="btn btn-primary" type="submit">保存内容</button>
+                                                            <button class="btn btn-white" type="submit">取消</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                    
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右侧内容结束-->
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+
+    <!-- 全局js -->
+    <script src="{{__HOST__}}/admin/js/jquery.min.js?v=2.1.4"></script>
+    <script src="{{__HOST__}}/admin/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{{__HOST__}}/admin/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="{{__HOST__}}/admin/js/hAdmin.js?v=4.1.0"></script>
+    <script>
+        $(function(){
+            var ueditor = UE.getEditor('editor');
+            ueditor.addListener("ready", function (){ /*注意*/
+                // editor 准备好之后才可以使用
+                ueditor.setContent(`{{@list.content}}`);        /*es6的模板字符串*/
+            });
+        })
+    </script>
+    <!-- <script type="text/javascript" src="{{__HOST__}}/admin/js/index.js"></script> -->
+
+    <!-- 第三方插件 -->
+    <!-- <script src="{{__HOST__}}/admin/js/plugins/pace/pace.min.js"></script> -->
+</body>
+
+</html>

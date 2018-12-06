@@ -12,362 +12,49 @@
                         <div class="col-sm-12">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <h5>基本 <small>分类，查找</small></h5>
+                                    <h5>分类列表 <small>分类，查找</small></h5>
                                 </div>
                                 <div class="ibox-content">
                                     <table class="table table-striped table-bordered table-hover dataTables-example">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">名称</th>
-                                                <th class="text-center">链接地址</th>
-                                                <th class="text-center">排序</th>
-                                                <th class="text-center">状态</th>
+                                                <th class="text-center">用户名</th>
+                                                <th class="text-center">用户类型</th>
+                                                <th class="text-center">注册时间</th>
+                                                <th class="text-center">最后登陆时间</th>
+                                                <th class="text-center">邮箱地址</th>
+                                                <th class="text-center">拓展信息</th>
                                                 <th class="text-center">操作</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {{each list}}
                                             <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
+                                                <td class="text-center">{{$value.user_name}}</td>
+                                                <td class="text-center">{{if $value.user_type==0}}未审核用户{{/if}}{{if $value.user_type==1}}超级管理员{{/if}}{{if $value.user_type==2}}普通管理员{{/if}}{{if $value.user_type==3}}VIP用户{{/if}}{{if $value.user_type==3}}普通用户{{/if}}</td>
+                                                <td class="text-center">{{$value.create_time}}</td>
+                                                <td class="text-center">{{$value.update_time}}</td>
+                                                <td class="text-center">{{$value.user_email}}</td>
+                                                <td class="text-center">{{$value.user_extend}}</td>
                                                 <td class="text-center">
-                                                    1
+                                                    <a class="delete"  href="{{__HOST__}}/admin/remove?collection=user&id={{$value.id}}">删除</a>
                                                 </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td class="text-center">网站首页</td>
-                                                <td class="text-center">/target
-                                                </td class="text-center">
-                                                <td class="text-center">
-                                                    1
-                                                </td>
-                                                <td class="text-center">
-                                                    <button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
-                                                    </button>
-                                                    <button class="btn btn-warning btn-circle" type="button"><i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="btn-group">
-                                                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="#">置顶</a>
-                                                        </li>
-                                                        <li><a href="#">修改</a>
-                                                        </li>
-                                                        <li><a href="#">禁用</a>
-                                                        </li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">删除</a>
-                                                        </li>
-                                                    </ul>
-                                                </div></td>
-                                            </tr>
+                                            </tr>                              
+                                            {{/each}}
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th class="text-center">名称</th>
-                                                <th class="text-center">链接地址</th>
-                                                <th class="text-center">排序</th>
-                                                <th class="text-center">状态</th>
+                                                <th class="text-center">用户名</th>
+                                                <th class="text-center">用户类型</th>
+                                                <th class="text-center">注册时间</th>
+                                                <th class="text-center">最后登陆时间</th>
+                                                <th class="text-center">邮箱地址</th>
+                                                <th class="text-center">拓展信息</th>
                                                 <th class="text-center">操作</th>
                                             </tr>
                                         </tfoot>
                                     </table>
-                
+                                    <div id="pagination" class="pagination"></div>
                                 </div>
                             </div>
                         </div>
@@ -385,16 +72,23 @@
     <script src="{{__HOST__}}/admin/js/bootstrap.min.js?v=3.3.6"></script>
     <script src="{{__HOST__}}/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="{{__HOST__}}/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- Data Tables -->
-    <script src="{{__HOST__}}/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="{{__HOST__}}/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+   
+    <script src="{{__HOST__}}/admin/js/jqPaginator.js"></script>
     <!-- 自定义js -->
     <script src="{{__HOST__}}/admin/js/hAdmin.js?v=4.1.0"></script>
     <script src="{{__HOST__}}/admin/js/content.js?v=1.0.0"></script>
+    <script src="{{__HOST__}}/admin/js/base.js?v=1.0.0"></script>
     <script>
-        $(function(){
-            $('.dataTables-example').dataTable();
-        })
+        $('#pagination').jqPaginator({
+            totalPages: {{totalPages}}, //页数
+            visiblePages: 8,   //当前显示8个分页按钮
+            currentPage: {{page}},  //当前页
+            onPageChange: function (num, type) {
+                if(type=='change'){
+                    location.href="{{__HOST__}}/admin/user/list?page="+num;
+                }
+            }
+        });
     </script>
 </body>
 
