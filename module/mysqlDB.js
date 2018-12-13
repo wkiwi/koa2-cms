@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-17 14:44:05
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-11-23 17:26:37
+ * @LastEditTime: 2018-12-11 14:56:29
  */
 
  
@@ -20,17 +20,13 @@ mysql curd语句
 */
 var mysql = require('mysql');
 
+var sql_config = require('../config/sql_config.js')
 //建立连接的方法
 
 
 function __connection(){
 
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : 'root123',
-        database : 'koacms'
-    });
+    var connection = mysql.createConnection(sql_config);
     connection.connect();
     return connection;
 }

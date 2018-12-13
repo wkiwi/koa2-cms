@@ -55,6 +55,12 @@
                     <li>
                         <a {{if G.url[1]=='website'&&G.url[2]=='link'&&G.url[3]=='list'}} class="active" {{/if}} href="{{__HOST__}}/admin/website/link/list"><i class="fa fa-bars"></i> 友情链接列表</a>
                     </li>
+                    <li>
+                        <a {{if G.url[1]=='website'&&G.url[2]=='adv'&&!G.url[3]}} class="active" {{/if}} href="{{__HOST__}}/admin/website/adv"><i class="fa fa-puzzle-piece"></i> 添加广告</a>
+                    </li>
+                    <li>
+                        <a {{if G.url[1]=='website'&&G.url[2]=='adv'&&G.url[3]=='list'}} class="active" {{/if}} href="{{__HOST__}}/admin/website/adv/list"><i class="fa fa-bars"></i> 广告列表</a>
+                    </li>
                 </ul>
             </li>
             <li class="line dk"></li>

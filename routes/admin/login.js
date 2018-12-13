@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-17 14:44:05
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-01 21:21:42
+ * @LastEditTime: 2018-12-07 11:21:36
  */
 const router=require('koa-router')();
 
@@ -26,7 +26,7 @@ router.post('/doLogin',async(ctx)=>{
    let code=ctx.request.body.code
    //console.log(tools.md5(password))
    if(code.toLowerCase()==ctx.session.code.toLowerCase()){
-       var sql='select * from `user` where user_name=? AND pass_word=?';
+       var sql='select * from `user` where user_name=? AND pass_word=? AND (user_type=1 OR user_type=2)';
        var result=await DB.query(sql,[username,tools.md5(password)]);
        console.log(result)
        if(result.length>0){
@@ -34,9 +34,10 @@ router.post('/doLogin',async(ctx)=>{
            //console.log(result)
            ctx.session.userinfo=result[0];
            //更新用户表 改变用户登录时间
+           let login_ip=tools.getClientIP(ctx)
            let last = tools.getCurrentDate(2);
-           var sql='update `user` set update_time=? where user_name=?';
-           await DB.query(sql,[last,username]);
+           var sql='update `user` set update_time=?,login_ip=? where user_name=?';
+           await DB.query(sql,[last,login_ip,username]);
            ctx.redirect(ctx.state.__HOST__+'/admin')
        }else{
            console.log("失败")

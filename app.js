@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-17 14:44:05
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-11-23 17:25:33
+ * @LastEditTime: 2018-12-13 17:36:29
  */
 
 var Koa=require('koa'),
@@ -16,8 +16,15 @@ var Koa=require('koa'),
     sd = require('silly-datetime'),
     jsonp = require('koa-jsonp'),
     path = require ('path'),
+    logger = require('koa-logger'),
+    onerror = require('koa-onerror'),
     cors = require('koa2-cors');
 
+
+//引入路由模块
+var  admin=require('./routes/admin.js');
+var  api=require('./routes/api.js');
+var  index=require('./routes/index.js');
 
 var app = new Koa();
 
@@ -25,6 +32,8 @@ var app = new Koa();
 app.use(bodyParser());//配置post bodyparser的中间件
 app.use(jsonp());
 app.use(cors());
+// app.use(logger());
+
 app.keys = ['some secret hurr'];
 
 const CONFIG = {
@@ -50,10 +59,6 @@ render(app,{
 app.use(static(__dirname+'/public'));   //koa静态资源中间件可以配置多个
 
 
-//引入模块
-var  admin=require('./routes/admin.js');
-var  api=require('./routes/api.js');
-var  index=require('./routes/index.js');
 
 //配置路由
 router.use('/admin',admin);
@@ -62,6 +67,12 @@ router.use(index);
 
 app.use(router.routes());   /*启动路由*/
 app.use(router.allowedMethods());
+
+app.on('error', function(err, ctx){
+  console.log(err)
+  // logger.error('server error', err, ctx);
+});
+
 app.listen(3000);
 
 

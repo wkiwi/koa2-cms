@@ -65,6 +65,16 @@ CREATE TABLE `link` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='友情链接';
 
+DROP TABLE IF EXISTS `adv`;
+CREATE TABLE `adv` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` char(255) NOT NULL DEFAULT '' COMMENT '链接名称',
+  `sort` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `pic` char(255) NOT NULL DEFAULT '' COMMENT '链接主图',
+  `link` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '审核状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告链接';
 
 DROP TABLE IF EXISTS `classify`;
 CREATE TABLE `classify` (
@@ -96,6 +106,9 @@ CREATE TABLE `article` (
   `create_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '发表时间',
   `update_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '修改时间',
   `article_extend` text CHARACTER SET utf8 COLLATE utf8_unicode_ci COMMENT '扩展信息',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点击浏览量',
+  `comment` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论量',
+  `praise` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞量',
   PRIMARY KEY (`id`),
   KEY `classify` (`classify`) USING BTREE,
   KEY `user_id` (`user_id`) USING BTREE
@@ -108,6 +121,30 @@ CREATE TABLE `recommend` (
   `sort_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章推荐类型 1:精品;2:热品;3:新品',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章推荐类型关联表';
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章ID',
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '评论内容',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论用户ID',
+  `create_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '评论时间',
+  PRIMARY KEY (`id`),
+  KEY `article_id` (`article_id`) USING BTREE,
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论列表';
+
+
+DROP TABLE IF EXISTS `praise`;
+CREATE TABLE `praise` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章ID',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞用户ID',
+  `create_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '点赞时间',
+  PRIMARY KEY (`id`),
+  KEY `article_id` (`article_id`) USING BTREE,
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章点赞列表';
 
 -- DROP TABLE IF EXISTS `upload`;
 -- CREATE TABLE `upload` (

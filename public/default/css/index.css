@@ -1,0 +1,362 @@
+@charset "UTF-8";
+/*
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2018-12-07 15:43:36
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2018-12-13 17:01:18
+ */
+/* main */
+.main-wrapper {
+  width: 100%;
+  margin-top: 15px;
+  background: #fefefe;
+}
+
+.slider-adv-box, .advtop {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.advtop-list {
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.advtop-list .advtop-item {
+  float: left;
+  width: 224px;
+  height: 180px;
+  margin-right: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.advtop-list .advtop-item:last-child {
+  margin-right: 0;
+}
+
+/* article-classify */
+.article-classify {
+  padding-top: 10px;
+  text-align: center;
+  background: #fefefe;
+}
+
+.article-classify.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 20;
+}
+
+.classify-list {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.classify-list a {
+  padding: 15px 20px;
+}
+
+.classify-list a .iconfont {
+  padding-left: 15px;
+}
+
+.classify-list .classify-list-item {
+  position: relative;
+  display: inline-block;
+}
+
+.classify-list .classify-list-item:hover .classify-child-list {
+  display: block;
+}
+
+.classify-list .classify-list-item:hover .iconfont::before {
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -moz-transform: rotate(180deg);
+  /* Firefox */
+  -webkit-transform: rotate(180deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(180deg);
+  /* Opera */
+}
+
+.classify-list .classify-list-item .classify-child-list {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 44px;
+  padding: 0 15px;
+  text-align: center;
+  background: #fefefe;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #f4f4f4;
+  border-top: none;
+  -webkit-box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.classify-list .classify-list-item .classify-child-list .classify-child-item {
+  line-height: 30px;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+/* subnav-wrap */
+.subnav-wrap {
+  height: 56px;
+  width: 100%;
+  background: #f4f4f4;
+}
+
+.subnav-wrap .subnav-contentbox {
+  width: 1200px;
+  height: 56px;
+  margin: 0 auto;
+}
+
+.subnav-content {
+  width: 100%;
+  height: 100%;
+}
+
+.subnav-content .subnav-item {
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 56px;
+}
+
+.subnav-content .subnav-item.current {
+  border-bottom: 2px solid #282828;
+}
+
+.subnav-content .subnav-item.current a {
+  color: #282828;
+}
+
+.subnav-content .subnav-item:hover {
+  border-bottom: 2px solid #282828;
+}
+
+.subnav-content .subnav-item a {
+  color: #bbb;
+}
+
+.subnav-content .subnav-item a:hover {
+  color: #282828;
+}
+
+/* all-work-bg */
+.all-work-bg {
+  background: #f4f4f4;
+  width: 100%;
+}
+
+.all-work-bg .all-work-list {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+  overflow: hidden;
+}
+
+.work-list-box {
+  width: 100%;
+}
+
+.work-list-box .card {
+  position: relative;
+  top: 0;
+  width: 220px;
+  margin: 10px;
+  background: #fefefe;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.work-list-box .card:hover {
+  top: -5px;
+  -webkit-box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.work-list-box .card:hover .card-ft {
+  top: 0;
+  opacity: 1;
+}
+
+.card-hd {
+  position: absolute;
+}
+
+.card-bd .card-img {
+  width: 100%;
+  height: 165px;
+  background: #f1f1f1;
+}
+
+.card-bd .card-img:hover {
+  opacity: .9;
+}
+
+.card-bd .card-img .img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-bd .card-info {
+  color: #bbb;
+  padding: 10px 15px;
+  width: 100%;
+  font-size: 12px;
+}
+
+.card-bd .card-info .title {
+  line-height: 35px;
+  color: #282828;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.card-bd .card-info .keywords {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.card-bd .card-info .keywords .key {
+  color: #282828;
+  margin-right: 6px;
+}
+
+.card-bd .statistics {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  margin-left: -5px;
+  cursor: pointer;
+}
+
+.card-bd .statistics .statistics-item {
+  float: left;
+  width: 33.3333333%;
+}
+
+.card-bd .statistics .statistics-item .iconfont {
+  padding: 0 5px;
+}
+
+.card-bd .user {
+  width: 100%;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.card-bd .user .user-avator {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f1f1f1;
+}
+
+.card-bd .user .user-avator img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-bd .user .user-name {
+  display: inline-block;
+  height: 24px;
+  padding-left: 10px;
+  line-height: 24px;
+  width: 85px;
+}
+
+.card-bd .user .update-time {
+  height: 24px;
+  line-height: 24px;
+}
+
+.card-ft {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  position: absolute;
+  top: -165px;
+  left: 0;
+  width: 100%;
+  height: 165px;
+}
+
+.card-ft .mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 17, 27, 0.4);
+  padding: 10px;
+}
+
+.card-ft .mask a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card-ft .mask .desc {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #fefefe;
+  font-weight: normal;
+}
+
+.all-link-bg {
+  background: #fefefe;
+  width: 100%;
+}
+
+.all-link-bg .all-link-list {
+  width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.all-link-bg .all-link-list .link-item {
+  padding: 10px 0;
+  line-height: 50px;
+  float: left;
+}
+
+.all-link-bg .all-link-list .link-item .img-wrapper {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.all-link-bg .all-link-list .link-item .img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.all-link-bg .all-link-list .link-item:last-child a::after {
+  content: "";
+}
+
+.all-link-bg .all-link-list a:hover::after {
+  color: #282828;
+}
+
+.all-link-bg .all-link-list a::after {
+  content: "|";
+  padding: 0 20px;
+}
+/*# sourceMappingURL=index.css.map */

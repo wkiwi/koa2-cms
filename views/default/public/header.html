@@ -1,0 +1,48 @@
+<header class="header">
+  <nav class="header-nav">
+    <div class="logo">
+      <h1><a href="#">Wkiwi</a></h1>
+    </div><!-- /.logo -->
+    <div class="menu">
+      <ul class="menu-list-content">
+        {{each navlist}}
+        <li class="menu-item" title ="{{$value.keywords}}">
+          <a href="{{$value.link}}" >{{$value.title}}</a>
+          {{if $value.list.length>0}}
+          <ul class="menu-child-list">
+              {{each $value.list}}
+            <li class="child-item" title="{$value.keywords}}"><a href="{{$value.link}}">{{$value.title}}</a></li>
+            {{/each}}
+          </ul>
+          {{/if}}
+        </li><!-- /.menu-item -->
+        {{/each}}
+      </ul>
+    </div><!-- /.menu -->
+    <div class="search"></div><!-- /.search -->
+    <div class="user-center">
+      {{if !userinfo}}
+      <div class="login">
+        <span class="longin-in"><a href="{{__HOST__}}/login">登陆</a></span>
+        <span>|</span>
+        <span class="register"><a href="{{__HOST__}}/register">注册</a></span>
+      </div>
+      {{else}}
+      <div class="userinfo">HI,{{userinfo.user_name}}
+        <div class="userinfo-box">
+            <a href="#">
+            <div class="user-avator">
+              <img src="{{__HOST__}}/{{userinfo.user_pic}}" alt="">
+            </div>
+            <strong class="username ellipsis">{{userinfo.user_name}}</strong>
+            </a>
+            <div class="user-extend ti2">
+              前端开发，小程序开发，APP开发
+            </div>
+            <div class="log-out tac"><a href="{{__HOST__}}/loginOut"><i class="iconfont icon-tuichu"></i>退出登陆</a></div>
+        </div>
+      </div><!-- /.user-info -->
+      {{/if}}
+    </div><!-- /.user-center -->
+  </nav>
+</header><!-- /.header -->

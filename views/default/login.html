@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用户登陆</title>
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/base.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/common.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/login.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_956869_f0i90yhb5ag.css">
+</head>
+
+<body>
+  <div class="pass-main-body">
+    <div class="login-wrapper">
+      <form action="{{__HOST__}}/dologin" id="login_form" method="post">
+        <span class="login-from-title">登陆</span>
+        <div class="from-group">
+          <label> 用户名</label>
+          <input class="input-100" name="user_name" type="text" placeholder="请输入用户名" id="user_name">
+          <i class="iconfont icon-yonghu1"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="from-group">
+          <label> 密码</label>
+          <input class="input-100" name="pass_word" type="password" placeholder="请输入密码" id="pass_word">
+          <i class="iconfont icon-mima"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="from-group">
+          <label> 验证码</label>
+          <div class="img-wrapper fr">
+            <img id="codeimg" src="{{__HOST__}}/code" alt="验证码">
+          </div>
+          <input class="input-50" name="code" type="text" placeholder="请输入验证码" id="code">
+          <i class="iconfont icon-yanzhengma"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="login100-btn-wrapper">
+          <div class="login100-btn-bg"></div>
+          <button class="login-btn" type="submit">登陆</button>  
+        </div><!-- /.login100-btn -->
+      </form>
+      <div class="link-grou">
+        <!-- <a href="#">忘记密码？</a>
+        <span class="long-string">|</span> -->
+        <a href="{{__HOST__}}/register">注册</a>
+      </div><!-- /.link-grou -->
+    </div><!-- /.login-wrapper -->
+  </div><!-- /.pass-main-body -->
+</body>
+<script src="{{__HOST__}}/default/js/jquery-2.2.4.min.js"></script>
+<script>
+  $(function(){
+    $("#codeimg").click(function(event) {
+        $(this).attr("src","{{__HOST__}}/code?"+Math.random()*1000)
+    });
+    $("#login_orm").submit(function(){
+        if($("#user_name").val().trim()==''||$("#pass_word").val().trim()==''||$("#code").val().trim()==''){
+            alert("用户名密码验证码均不能为空");
+            return false;
+        }else{
+            return true;
+        }
+    })
+  })
+</script>
+</html>

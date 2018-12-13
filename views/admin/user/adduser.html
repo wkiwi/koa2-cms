@@ -1,10 +1,10 @@
-{{include '../../public/header.html'}}
+{{include '../public/header.html'}}
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
-        {{include '../../public/nav_left.html'}}
+        {{include '../public/nav_left.html'}}
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            {{include '../../public/nav_top.html'}}
+            {{include '../public/nav_top.html'}}
             <div class="row J_mainContent" id="content-main">
                 <!--右侧内容开始-->
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -63,6 +63,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">邮箱</label>
+                
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="user_email">
+                                            </div>
+                                        </div>
                                         <div class="hr-line-dashed"></div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">人员扩展信息</label>
@@ -102,6 +109,7 @@
     <!-- <script type="text/javascript" src="{{__HOST__}}/admin/js/index.js"></script> -->
 
     <!-- 第三方插件 -->
+    {{if message}}
     <script src="{{__HOST__}}/admin/js/plugins/toastr/toastr.min.js"></script>
     <script type="text/javascript">
         $(function(){
@@ -113,19 +121,18 @@
                 "onclick": null,
                 "showDuration": "400",
                 "hideDuration": "1000",
-                "timeOut": "7000",
+                "timeOut": "4000",
                 "extendedTimeOut": "1000",
                 "showEasing": "swing",
                 "hideEasing": "linear",
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
-            // setTimeout(()=>{
-            //     toastr.err('23123123231231231');
-            // },2000)
-            
+            //toastr.clear();
+            toastr['{{message.toastType}}']('{{message.message}}', '{{message.title}}');
         })
     </script>
+    {{/if}}
 </body>
 
 </html>

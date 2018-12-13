@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="{{website.keywords}}" />
+  <meta name="description" content="{{website.content}}" />
+  <meta name="generator" content="{{website.copyright}}" />
+  <meta name="author" content="{{website.copyright}}">
+  <title>{{website.title}}</title>
+  <link rel="shortcut icon" href="{{__HOST__}}/default/favicon.ico">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/base.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/common.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/detail.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_956869_d2uv5ilwjrb.css">
+</head>
+
+<body>
+  <!-- <div id="J_header"></div> -->
+  {{include './public/header.html'}}
+  <main class="main-wrapper">
+    <div class="details-box-wrapper">
+      <div class="details-header">
+          <div class="work-header">
+            <div class="work-header-left fl">
+              <h2 class="title">{{article.title}}</h2>
+              <p class="title-time">发表时间:{{article.create_time}}</p>
+              <!-- <p class="title-time">最后一次更新时间{{article.update_time}}</p> -->
+              <p class="statistics">
+                <span class="statistics-item statistics-view" title="100人气"><i class="iconfont icon-yanjing"></i>{{article.hits}}</span>
+                <span class="statistics-item statistics-zan" title="100赞"><i class="iconfont icon-icon"></i>{{article.praise}}</span>
+                <span class="statistics-item statistics-comment" title="100评价"><i class="iconfont icon-pingjiaguanli"></i>{{article.comment}}</span>
+              </p><!-- /.user -->
+            </div><!-- /.work-header-left -->
+            <div class="work-header-right fr">
+              <div class="user-avator">
+                <img src="{{__HOST__}}/{{article.user_pic}}" alt="">
+              </div><!-- /.user-avator -->
+              <div class="user-data">
+                <strong class="user-name" title="{{article.user_pic}}">用户名：{{article.user_name}}</strong>
+                <p class="user-extend">用户简介：{{article.user_extend}}</p>
+              </div>
+            </div><!-- /.work-header-right -->
+          </div><!-- /.work-header -->
+      </div><!-- /.details-header -->
+      <div class="author-card">
+      </div><!-- /.author-card -->
+    </div><!-- /.details-header -->
+    <div class="details-body">
+      <div class="details-content">
+        {{@article.content}}
+      </div>
+    </div><!-- /.details-body -->
+  </main><!-- /.main-wrapper -->
+  <!-- <div class="footer-wrapper" id="J_footer-wrapper"> -->
+    {{include './public/footer.html'}}
+  </div>
+</body>
+  <!-- 第三方js -->
+  <script src="{{__HOST__}}/default/js/jquery-2.2.4.min.js"></script>
+  <script src="{{__HOST__}}/default/js/jqPaginator.js"></script>
+  <!-- 自定义js -->
+  <script>
+    $(function() {
+      // $('#J_header').load('./assets/commen/header.html');
+      // $('#J_footer-wrapper').load('./assets/commen/footer.html');
+
+      /*-- 分页开始 --*/
+      // $('#pagination').jqPaginator({
+      //     totalPages: 4, //页数
+      //     visiblePages: 8,   //当前显示8个分页按钮
+      //     currentPage: 4,  //当前页
+      //     onPageChange: function (num, type) {
+      //         if(type=='change'){
+      //             location.href="#";
+      //         }
+      //     }
+      // });
+      /*-- 分页结束 --*/
+      /*-- 推荐选择开始 --*/
+      $("#subnav-content li").on("click",function(){
+        if($(this).hasClass("current")){
+          return false;
+        }else {
+          $(this).siblings().removeClass("current")
+          $(this).addClass("current")
+        }
+      })
+      /*-- 推荐选择结束 --*/
+      /*-- 获取时间开始 --*/
+      function getCurrentDate(){
+        var now = new Date();
+        var year = now.getFullYear(); //得到年份
+        var month = now.getMonth();//得到月份
+        month = month + 1;
+        month < 10 ? month = "0" + month:month;
+        time = year + "." + month;
+        return time;
+      }
+      $('.copyrightLink .date').html('2018.12-'+getCurrentDate())
+      /*-- 获取时间结束 --*/
+    })
+  </script>
+</html>

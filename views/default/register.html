@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用户注册</title>
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/base.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/common.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/login.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/toastr.min.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_956869_f0i90yhb5ag.css">
+</head>
+
+<body>
+  <div class="pass-main-body">
+    <div class="login-wrapper">
+      <form method="post" action="{{__HOST__}}/doRegister" onSubmit="return check();"> <!---->
+        <span class="login-from-title">注册</span>
+        <div class="from-group">
+          <label> 用户名</label>
+          <input class="input input-100" name="user_name" type="text" placeholder="请输入用户名">
+          <i class="iconfont icon-yonghu1"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="from-group">
+          <label> 密码</label>
+          <input class="input input-100" name="pass_word" type="password" placeholder="请输入密码">
+          <i class="iconfont icon-mima"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="from-group">
+          <label> 确认密码</label>
+          <input class="input input-100" name="r_pass_word" type="password" placeholder="请再次输入密码">
+          <i class="iconfont icon-mima"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="from-group">
+          <label> 邮箱</label>
+          <input class="input input-100" name="user_email" type="email" placeholder="请输入邮箱">
+          <i class="iconfont icon-youxiang"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="from-group">
+          <label> 验证码</label>
+          <div class="img-wrapper fr">
+            <img id="codeimg" src="{{__HOST__}}/code" alt="验证码">
+          </div>
+          <input class="input input-50" name="code" type="text" placeholder="请输入验证码">
+          <i class="iconfont icon-yanzhengma"></i>
+          <span class="focus-input"></span>
+        </div><!-- /.from-group -->
+        <div class="login100-btn-wrapper">
+          <div class="login100-btn-bg"></div>
+          <button class="login-btn" type="submit" onclick=>注册</button>  
+        </div><!-- /.login100-btn -->
+      </form>
+      <div class="link-grou">
+        <a href="{{__HOST__}}/login">已有账号，去登陆！</a>
+      </div><!-- /.link-grou -->
+    </div><!-- /.login-wrapper -->
+  </div><!-- /.pass-main-body -->
+</body>
+<script src="{{__HOST__}}/default/js/jquery-2.2.4.min.js"></script>
+<script src="{{__HOST__}}/default/js/toastr.min.js"></script>
+<script src="{{__HOST__}}/default/js/main.js"></script>
+<script>
+/*-- 提交检查表单信息开始 --*/
+function check() {
+  if($('[name="user_name"]').val().trim()!="" && $('[name="r_pass_word"]').val().trim()!="" && $('[name="pass_word"]').val().trim()!="" && $('[name="user_email"]').val().trim()!="" && $('[name="code"]').val().trim()!="") {
+    if(code){
+      if(usernameCanUse()){
+          return true;
+      }else {
+        return false;
+      }
+    } else {
+      showToastr('error','错误提示','表单信息有误!')
+      return false;
+    }
+  }else {
+    showToastr('error','错误提示','表单信息不全!')
+    return false;
+  }
+}
+/*-- 提交检查表单信息结束 --*/
+/*-- 用户名查询开始 --*/
+function usernameCanUse() {
+  $.ajax({
+  type:"GET",
+  url:"{{__HOST__}}/registerUsername?username="+$('[name="user_name"]').val().trim(),
+  dataType:"json",
+  success:function(data){
+    if(data.er_code==10000) {
+      console.log(data.data.canRegister)
+      if(!data.data.canRegister){
+          showToastr('error','错误提示','该用户名已被注册')
+          code = false;
+          return false;
+        } else {
+          // return true;
+          checkPasswordLength()
+        }
+      }
+    }
+  })
+}
+/*-- 用户名查询结束 --*/
+
+/*-- 密码位数检查开始 --*/
+function checkPasswordLength() {
+  console.log($('[name="pass_word"]').val().trim().length)
+  if($('[name="pass_word"]').val().trim().length>5) {
+    return true;
+  } else {
+    showToastr('error','错误提示','密码至少设置6位！')
+    code = false;
+    return false;
+  }
+}
+/*-- 密码位数检查结束 --*/
+$(function(){
+  $("#codeimg").click(function(event) {
+    $(this).attr("src","{{__HOST__}}/code?"+Math.random()*1000)
+  });
+  $('[name="user_name"]').on('blur', function(){
+    usernameCanUse();
+  })
+  $('[name="pass_word"]').on('blur', function(){
+    checkPasswordLength();
+  })
+  
+})
+
+</script>
+</html>

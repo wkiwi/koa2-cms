@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-28 09:14:59
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-06 21:38:27
+ * @LastEditTime: 2018-12-13 09:53:53
  */
 const router=require('koa-router')();
 
@@ -19,22 +19,25 @@ router.get('/',async(ctx)=>{
 
 router.post('/doadd',async(ctx)=>{
     // ctx.body='添加人员';
-    console.log(ctx.session.userinfo)
-
-    let user_name=ctx.request.body.user_name;
-    let pass_word=tools.md5(ctx.request.body.pass_word);
-    let user_type=ctx.request.body.user_type;
-    let user_extend=ctx.request.body.user_extend || '';
-    let create_time= tools.getCurrentDate(2);
-    let update_time = create_time;
-    let user_email = '';
-    let login_ip = '';
-    let user_pic = '';
-    var id = null;
-    var sql='insert into `user` (id,user_name,pass_word,user_type,user_email,create_time,login_ip,update_time,user_pic,user_extend) value (?,?,?,?,?,?,?,?,?,?)';
-    var result=await DB.query(sql,[id,user_name,pass_word,user_type,user_email,create_time,login_ip,update_time,user_pic,user_extend]);
-    
-    await ctx.render('admin/user/adduser')
+    if(ctx.session.userinfo.user_type!=1){//判断用户类型是否为超级管理员
+        await ctx.render('admin/user/adduser',{
+            message:{"toastType":"error","title":"暂无权限","message":"您不是超级管理员暂时没有权限添加管理员！"}
+        })
+    }else {
+        let user_name=ctx.request.body.user_name;
+        let pass_word=tools.md5(ctx.request.body.pass_word);
+        let user_type=ctx.request.body.user_type;
+        let user_extend=ctx.request.body.user_extend || '';
+        let create_time= tools.getCurrentDate(2);
+        let update_time = create_time;
+        let user_email = ctx.request.body.user_email;
+        let login_ip = '';
+        let user_pic = 'default/images/avator.jpg';
+        var id = null;
+        var sql='insert into `user` (id,user_name,pass_word,user_type,user_email,create_time,login_ip,update_time,user_pic,user_extend) value (?,?,?,?,?,?,?,?,?,?)';
+        var result=await DB.query(sql,[id,user_name,pass_word,user_type,user_email,create_time,login_ip,update_time,user_pic,user_extend]);
+        await ctx.render('admin/user/adduser')
+    }
 })
 
 router.get('/list',async(ctx)=>{

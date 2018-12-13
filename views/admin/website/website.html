@@ -1,10 +1,10 @@
-﻿{{include '../../public/header.html'}}
+﻿{{include '../public/header.html'}}
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
-        {{include '../../public/nav_left.html'}}
+        {{include '../public/nav_left.html'}}
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            {{include '../../public/nav_top.html'}}
+            {{include '../public/nav_top.html'}}
             <div class="row J_mainContent" id="content-main">
                 <!--右侧内容开始-->
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -89,6 +89,30 @@
  
      <!-- 自定义js -->
      <script src="{{__HOST__}}/admin/js/hAdmin.js?v=4.1.0"></script>
+     {{if message}}
+    <script src="{{__HOST__}}/admin/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "positionClass": "toast-top-center",
+                "onclick": null,
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "4000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            //toastr.clear();
+            toastr['{{message.toastType}}']('{{message.message}}', '{{message.title}}');
+        })
+    </script>
+    {{/if}}
 </body>
 
 </html>

@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-17 14:44:05
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-02 18:56:33
+ * @LastEditTime: 2018-12-12 17:52:51
  */
 
 var md5 = require('md5');
@@ -32,6 +32,18 @@ let tools={
     },
     getTime(){
         return new Date();
+    },
+    // 公用：获取客户端IP
+    getClientIP: function (ctx) {
+        let req = ctx.request
+        let ip = ctx.ip ||
+        req.headers['x-forwarded-for'] ||
+        req.ip ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress || ''
+        let arr = ip.match(/(\d{1,3}\.){3}\d{1,3}/)
+        return arr ? arr[0] : ''
     },
     getCurrentDate(format){
         var now = new Date();
@@ -79,6 +91,45 @@ let tools={
             }
         }
         return firstArr;
+    },
+    hasSpecialCharacter(value){
+        let reg = /[~#^$%&!?%*]/gi;
+        if(reg.test(value)){ // 判断是否包含特殊字符
+            return true;
+        }else {
+            return false;
+        }
+    },
+    isEmojiCharacter(substring) { //检查是否位特殊字符
+        for (var i = 0; i < substring.length; i++) {
+            var hs = substring.charCodeAt(i);
+            if (0xd800 <= hs && hs <= 0xdbff) {
+            if (substring.length > 1) {
+                var ls = substring.charCodeAt(i + 1);
+                var uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                if (0x1d000 <= uc && uc <= 0x1f77f) {
+                return true;
+                }
+            }
+            } else if (substring.length > 1) {
+            var ls = substring.charCodeAt(i + 1);
+            if (ls == 0x20e3) {
+                return true;
+            }
+            } else {
+            if (0x2100 <= hs && hs <= 0x27ff) {
+                return true;
+            } else if (0x2B05 <= hs && hs <= 0x2b07) {
+                return true;
+            } else if (0x2934 <= hs && hs <= 0x2935) {
+                return true;
+            } else if (0x3297 <= hs && hs <= 0x3299) {
+                return true;
+            } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50) {
+                return true;
+            }
+            }
+        }
     }
 }
 module.exports=tools;

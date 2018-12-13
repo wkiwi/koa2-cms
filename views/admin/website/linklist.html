@@ -1,10 +1,10 @@
-{{include '../../public/header.html'}}
+{{include '../public/header.html'}}
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
-        {{include '../../public/nav_left.html'}}
+        {{include '../public/nav_left.html'}}
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            {{include '../../public/nav_top.html'}}
+            {{include '../public/nav_top.html'}}
             <div class="row J_mainContent" id="content-main">
                 <!--右侧内容开始-->
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -101,7 +101,7 @@
                 currentPage: {{page}},  //当前页
                 onPageChange: function (num, type) {
                     if(type=='change'){
-                        location.href="{{__HOST__}}/admin/website/banner/list?page="+num;
+                        location.href="{{__HOST__}}/admin/website/link/list?page="+num;
                     }
                 }
             });

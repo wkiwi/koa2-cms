@@ -1,10 +1,10 @@
-{{include '../../public/header.html'}}
+{{include '../public/header.html'}}
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
-        {{include '../../public/nav_left.html'}}
+        {{include '../public/nav_left.html'}}
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            {{include '../../public/nav_top.html'}}
+            {{include '../public/nav_top.html'}}
             <div class="row J_mainContent" id="content-main">
                 <!--右侧内容开始-->
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -29,17 +29,24 @@
                                         </thead>
                                         <tbody>
                                             {{each list}}
+                                            {{if $value.user_type!=1}}
                                             <tr class="gradeX">
                                                 <td class="text-center">{{$value.user_name}}</td>
-                                                <td class="text-center">{{if $value.user_type==0}}未审核用户{{/if}}{{if $value.user_type==1}}超级管理员{{/if}}{{if $value.user_type==2}}普通管理员{{/if}}{{if $value.user_type==3}}VIP用户{{/if}}{{if $value.user_type==3}}普通用户{{/if}}</td>
+                                                <td class="text-center">{{if $value.user_type==0}}未审核用户{{/if}}{{if $value.user_type==1}}超级管理员{{/if}}{{if $value.user_type==2}}普通管理员{{/if}}{{if $value.user_type==3}}VIP用户{{/if}}{{if $value.user_type==4}}普通用户{{/if}}</td>
                                                 <td class="text-center">{{$value.create_time}}</td>
                                                 <td class="text-center">{{$value.update_time}}</td>
                                                 <td class="text-center">{{$value.user_email}}</td>
                                                 <td class="text-center">{{$value.user_extend}}</td>
                                                 <td class="text-center">
-                                                    <a class="delete"  href="{{__HOST__}}/admin/remove?collection=user&id={{$value.id}}">删除</a>
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle">操作 <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li onclick="app.confirmDelete()"><a class="delete"  href="{{__HOST__}}/admin/remove?collection=user&id={{$value.id}}">删除</a></li>
+                                                        </ul>
+                                                    </div>
                                                 </td>
-                                            </tr>                              
+                                            </tr> 
+                                            {{/if}}                             
                                             {{/each}}
                                         </tbody>
                                         <tfoot>

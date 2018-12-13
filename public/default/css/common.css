@@ -1,0 +1,301 @@
+/*
+ * @Author: wkiwi
+ * @Email: w_kiwi@163.com
+ * @Date: 2018-12-07 15:43:36
+ * @LastEditors: wkiwi
+ * @LastEditTime: 2018-12-13 14:10:46
+ */
+a {
+  color: #282828;
+}
+
+a:hover {
+  color: #ff3464;
+}
+
+li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* header */
+.header {
+  width: 100%;
+  height: 56px;
+  background: #ffd100;
+}
+
+.header .header-nav {
+  position: relative;
+  width: 1200px;
+  height: 56px;
+  margin: 0 auto;
+}
+
+.header-nav .logo {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  text-align: center;
+  height: 56px;
+  line-height: 56px;
+}
+
+.header-nav .logo a {
+  text-decoration: none;
+}
+
+.header-nav .logo a:hover {
+  color: #282828;
+}
+
+.header-nav .menu {
+  height: 56px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header-nav .menu .menu-list-content .menu-item {
+  display: inline-block;
+  padding: 0 20px;
+  line-height: 56px;
+  position: relative;
+}
+
+.header-nav .menu .menu-list-content .menu-item .menu-child-list {
+  display: none;
+  position: absolute;
+  top: 56px;
+  left: -40px;
+  z-index: 10;
+  width: 150px;
+  padding: 10px 15px;
+  line-height: 40px;
+  text-align: center;
+  background: #fefefe;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #f4f4f4;
+  -webkit-box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.header-nav .menu .menu-list-content .menu-item .menu-child-list .child-item {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.header-nav .menu .menu-list-content .menu-item .menu-child-list .child-item:last-child {
+  border: none;
+}
+
+.header-nav .menu .menu-list-content .menu-item .menu-child-list .child-item:hover a {
+  color: #ff3464;
+}
+
+.header-nav .menu .menu-list-content .menu-item:hover {
+  background: #282828;
+}
+
+.header-nav .menu .menu-list-content .menu-item:hover > a {
+  color: #ffd100;
+}
+
+.header-nav .menu .menu-list-content .menu-item:hover .menu-child-list {
+  display: block;
+}
+
+.user-center {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  height: 56px;
+  line-height: 56px;
+}
+
+.user-center .login {
+  width: 120px;
+}
+
+.user-center .login .longin-in, .user-center .login .register {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+}
+
+.user-center .login .longin-in a, .user-center .login .register a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.user-center .userinfo {
+  position: relative;
+  height: 56px;
+  line-height: 56px;
+  cursor: pointer;
+}
+
+.user-center .userinfo .userinfo-box {
+  display: none;
+  position: absolute;
+  top: 56px;
+  left: -70px;
+  z-index: 30;
+  width: 200px;
+  padding: 20px 15px;
+  line-height: 20px;
+  font-size: 12px;
+  background: #fefefe;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #f4f4f4;
+  -webkit-box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 15px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.user-center .userinfo .userinfo-box .user-avator {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #dcdcdc;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-center .userinfo .userinfo-box .user-avator img {
+  width: 100%;
+  height: 100%;
+}
+
+.user-center .userinfo .userinfo-box .username {
+  display: inline-block;
+  padding: 0 10px;
+  width: 110px;
+  font-size: 16px;
+}
+
+.user-center .userinfo .userinfo-box .user-extend {
+  padding-top: 10px;
+}
+
+.user-center .userinfo .userinfo-box .log-out {
+  border-top: 1px solid #dcdcdc;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+
+.user-center .userinfo:hover .userinfo-box {
+  display: block;
+}
+
+/* pagination */
+.pagination-wrapper {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+  margin: 20px auto;
+  border-radius: 4px;
+}
+
+.pagination > li {
+  float: left;
+}
+
+.pagination > li > a {
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-right: none;
+  color: #666;
+  line-height: 1.42857;
+  padding: 8px 15px;
+  text-decoration: none;
+}
+
+.pagination > li:first-child > a {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.pagination > li:last-child > a {
+  margin-right: 0;
+  border-right: 1px solid #DDDDDD;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.pagination > .disabled a {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.pagination > .disabled a:hover {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.pagination > .disabled a:focus {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.pagination > .active a {
+  background-color: #ffd100;
+  border-color: #DDDDDD;
+  color: inherit;
+  cursor: default;
+  z-index: 2;
+}
+
+.pagination > .active a:hover {
+  background-color: #ffd100;
+  border-color: #DDDDDD;
+  color: inherit;
+  cursor: default;
+  z-index: 2;
+}
+
+.pagination > .active a:focus {
+  background-color: #ffd100;
+  border-color: #DDDDDD;
+  color: inherit;
+  cursor: default;
+  z-index: 2;
+}
+
+/* footer */
+.footer {
+  padding: 20px 0;
+  background: #282828;
+  color: #666;
+  font-size: 12px;
+}
+
+.footer a {
+  color: #666;
+}
+
+.footer .footer-wrapper-bottom {
+  text-align: center;
+  line-height: 40px;
+}
+
+.footer .footer-wrapper-bottom i {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  margin: 0 20px;
+  background: #666;
+  vertical-align: middle;
+}
+/*# sourceMappingURL=common.css.map */

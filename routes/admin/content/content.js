@@ -3,7 +3,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-11-28 09:14:59
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-06 20:03:50
+ * @LastEditTime: 2018-12-13 10:00:13
  */
 const router=require('koa-router')();
 
@@ -43,13 +43,13 @@ router.post('/doadd',tools.multer().single('thumbnail'),async(ctx)=>{
     let description = ctx.req.body.description||'';
     let content = ctx.req.body.content||'';
     var id = null;
-    var user_id = '0';
+    var user_id = ctx.session.userinfo.id;
     var read_type = '0';
     var create_time = tools.getCurrentDate(2);
     var update_time = tools.getCurrentDate(2);
     var article_extend = '';
-    var sql='insert into `article` (id,classify,user_id,title,author,copyright,keywords,description,thumbnail,recommend,content,type,read_type,create_time,update_time,article_extend) value (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ';/*SELECT @@IDENTITY */
-    var result=await DB.query(sql,[id,classify,user_id,title,author,copyright,keywords,description,thumbnail,recommendstr,content,type,read_type,create_time,update_time,article_extend]);
+    var sql='insert into `article` (id,classify,user_id,title,author,copyright,keywords,description,thumbnail,recommend,content,type,read_type,create_time,update_time,article_extend,hits,comment,praise) value (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ';/*SELECT @@IDENTITY */
+    var result=await DB.query(sql,[id,classify,user_id,title,author,copyright,keywords,description,thumbnail,recommendstr,content,type,read_type,create_time,update_time,article_extend,0,0,0]);
     var article_id = result.insertId;
     if(recommend) {
         for(let i=0;i<recommend.length;i++){

@@ -1,10 +1,10 @@
-{{include '../../public/header.html'}}
+{{include '../public/header.html'}}
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
-        {{include '../../public/nav_left.html'}}
+        {{include '../public/nav_left.html'}}
         <!--右侧部分开始-->
         <div id="page-wrapper" class="gray-bg dashbard-1">
-            {{include '../../public/nav_top.html'}}
+            {{include '../public/nav_top.html'}}
             <div class="row J_mainContent" id="content-main">
                 <!--右侧内容开始-->
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -38,8 +38,9 @@
                                             <div class="col-sm-10">
                                                 <input type="file" name="pic">
                                                 <div class="img-wrapper" style="height:100px;width:100%;">
-                                                        <img src="{{__HOST_}}/{{list.pic}}" alt="">
+                                                        <img src="{{__HOST_}}/{{list.pic}}" alt="" style="height:100%;">
                                                 </div>
+                                                <span class="help-block m-b-none">图片建议大小 200px * 150px</span>
                                             </div>
                                         </div>
                                         <div class="hr-line-dashed"></div>

@@ -1,11 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="{{website.keywords}}" />
+  <meta name="description" content="{{website.content}}" />
+  <meta name="generator" content="{{website.copyright}}" />
+  <meta name="author" content="{{website.copyright}}">
+  <title>{{website.title}}</title>
+  <link rel="shortcut icon" href="{{__HOST__}}/default/favicon.ico">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/base.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/common.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/slider.css">
+  <link rel="stylesheet" href="{{__HOST__}}/default/css/index.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_956869_f0i90yhb5ag.css">
 </head>
+
 <body>
-    <h2 class="title">这是首页</h2>
+  <!-- <div id="J_header"></div> -->
+  {{include './public/header.html'}}
+  <main class="main-wrapper">
+    <!-- [轮播图开始] -->
+    <div class="slider-adv-box">
+      <div class="slider">
+        <div class="banner">
+          <ul class="slide-container">
+            {{each banner}}
+            <li class="slide">
+              <a href="{{$value.link}}" target="_blank">
+                <img src="{{__HOST__}}/{{$value.pic}}"  alt="{{$value.title}}" width="100%" >
+              </a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div><!-- /.slider-adv-box -->
+    <!-- [轮播图结束] -->
+    <!-- [广告位开始] -->
+    <div class="advtop">
+      <ul class="advtop-list">
+        {{each advlist}}
+        <li class="advtop-item">
+          <a href="{{__HOST__}}/{{$value.link}}" title="{{$value.title}}">
+            <img src="{{__HOST__}}/{{$value.pic}}" alt="{{$value.title}}">
+          </a>
+        </li>
+        {{/each}}
+        <!-- <li class="advtop-item">
+          <a href="#">
+            <img src="{{__HOST__}}/default/pacture/adv.jpeg" alt="img">
+          </a>
+        </li>
+        <li class="advtop-item">
+          <a href="#">
+            <img src="{{__HOST__}}/default/pacture/adv.jpeg" alt="img">
+          </a>
+        </li>
+        <li class="advtop-item">
+          <a href="#">
+            <img src="{{__HOST__}}/default/pacture/adv.jpeg" alt="img">
+          </a>
+        </li>
+        <li class="advtop-item">
+          <a href="#">
+            <img src="{{__HOST__}}/default/pacture/adv.jpeg" alt="img">
+          </a>
+        </li> -->
+      </ul>
+    </div><!-- /.advtop -->
+    <!-- [广告位结束] -->
+    <!-- [文章分类开始] -->
+    <div class="article-classify" id="J_article-classify">
+      <ul class="classify-list">
+        <li class="classify-list-item">
+          <a data-classifyId="0" class="current">默认 </a> 
+        </li><!-- /.classify-list -->
+        {{each classifylist}}
+        <li class="classify-list-item" title="{{$value.keywords}}">
+          <a data-classifyId="{{$value.id}}">{{$value.title}} {{if $value.list.length>0}}<i class="iconfont icon-xia"></i>{{/if}}</a>
+          {{if $value.list}}
+          <ul class="classify-child-list">
+            {{each $value.list}}
+            <li class="classify-child-item" title="{{$value.keywords}}"><a data-classifyId="{{$value.id}}">{{$value.title}}</a></li>
+            {{/each}}
+          </ul><!-- /.classify-child-list -->
+          {{/if}}
+        </li><!-- /.classify-list -->
+        {{/each }}
+      </ul><!-- /.classify-list -->
+    </div><!-- /.article-classify -->
+    <!-- [文章分类结束] -->
+    <!-- [推荐分类开始] -->
+    <div class="subnav-wrap">
+      <div class="subnav-contentbox">
+        <ul class="subnav-content" id="subnav-content">
+          <li class="subnav-item current" data-recommendId="0"><a  class="title"  >综合</a></li>
+          <li class="subnav-item " data-recommendId="1"><a   class="title"  >精品</a></li>
+          <li class="subnav-item " data-recommendId="2"><a  class="title"  >热品</a></li>
+          <li class="subnav-item" data-recommendId="3"><a  class="title"  >最新</a></li>
+        </ul>
+      </div>
+    </div><!-- /.subnav-wrap -->
+    <!-- [推荐分类结束] -->
+    <!-- [作品列表开始] -->
+    <div class="all-work-bg">
+      <div class="all-work-list">
+        <div class="work-list-box clearfix" id="J_work-list-box">
+        </div><!-- /.work-list-box -->
+        <div class="pagination-wrapper">
+        <ul id="pagination" class="pagination"></ul>
+        </div>
+      </div><!-- /.all-work-list -->
+    </div><!-- /.all-work-bg -->
+    <!-- [作品列表结束] -->
+    <!-- [友情链接开始] -->
+    <div class="all-link-bg">
+      <ul class="all-link-list">
+        {{each linklist}}
+        <li class="link-item">
+          <a href="{{$value.link}}">{{if $value.pic}}<div class="img-wrapper"><img src="{{__HOST__}}/{{$value.pic}}" alt=""></div>{{/if}} {{$value.title}}</a> 
+        </li><!-- /.link-item -->
+        {{/each}}
+      </ul><!-- /.all-link-list -->
+    </div><!-- /.all-link-bg -->
+    <!-- [友情链接结束] -->
+  </main><!-- /.main-wrapper -->
+  <!-- <div class="footer-wrapper" id="J_footer-wrapper"> -->
+  {{include './public/footer.html'}}
+  </div>
 </body>
+  <!-- 第三方js -->
+  <script src="{{__HOST__}}/default/js/jquery-2.2.4.min.js"></script>
+  <script src="{{__HOST__}}/default/js/unslider.js"></script>
+  <script src="{{__HOST__}}/default/js/jqPaginator.js"></script>
+
+  <!-- 自定义js -->
+  <script>
+    /*-- 统一的分类ID与状态信息存储开始 --*/
+    var app ={
+        classify: 0,
+        recommend: 0,
+        page:1,
+        count: 0,
+        url: "{{__HOST__}}/article",
+        imgurl:"{{__HOST__}}/default/images/card_img.jpg"
+    };
+    /*-- 统一的分类ID与状态信息存储结束 --*/
+    $(function() {
+      // $('#J_header').load('./assets/commen/header.html');
+      // $('#J_footer-wrapper').load('./assets/commen/footer.html');
+      /*-- 轮播图开始 --*/
+      if ($.fn.unslider) {
+        $('.banner').unslider({
+          autoplay: true,
+          arrows: true,
+          speed: 500,
+          delay: 3500,
+          infinite: true,
+          fluid: true
+        })
+      }
+      $('.slider').hover(function (event) {
+        event.stopPropagation()
+        $(this).parents().children().find('.next,.prev').show()
+      }, function () {
+        $(this).parents().children().find('.next,.prev').hide()
+      })
+      /*-- 轮播图结束 --*/
+      /*-- 分页开始 --*/
+      function initjqPaginator(){
+        console.log(app.count)
+          $('#pagination').html('')
+          $('#pagination').jqPaginator({
+            totalPages: app.count, //页数
+            visiblePages: 8,   //当前显示8个分页按钮
+            currentPage: 1,  //当前页
+            onPageChange: function (num, type) {
+                if(type=='change'){
+                    app.page=num;
+                    requestdata(app.classify,app.recommend,app.page,true)
+                }
+            }
+          });
+      }
+      /*-- 分页结束 --*/
+      /*-- 推荐选择开始 --*/
+      $("#subnav-content li").on("click",function(){
+        if($(this).hasClass("current")){
+          return false;
+        }else {
+          $(this).siblings().removeClass("current");
+          $(this).addClass("current");
+          // console.log($(this).context.dataset.recommendid)
+          app.recommend=$(this).context.dataset.recommendid;
+          app.page=1;
+          requestdata(app.classify,app.recommend,app.page,false)
+        }
+        
+      })
+      /*-- 推荐选择结束 --*/
+      /*-- 获取时间开始 --*/
+      function getCurrentDate(){
+        var now = new Date();
+        var year = now.getFullYear(); //得到年份
+        var month = now.getMonth();//得到月份
+        month = month + 1;
+        month < 10 ? month = "0" + month:month;
+        time = year + "." + month;
+        return time;
+      }
+      $('.copyrightLink .date').html('2018.12-'+getCurrentDate())
+      /*-- 获取时间结束 --*/
+      /*-- 页面滚动内容筛选区域吸顶开始 --*/
+      $(window).scroll(function(){
+        let scrolltimer;
+        clearTimeout(scrolltimer);
+        scrolltimer =setTimeout(function(){//去抖动
+          // console.log($(window).scrollTop())
+          if($(window).scrollTop()>= 606){
+            $('#J_article-classify').addClass("fixed-top");
+          }else {
+            $('#J_article-classify').removeClass("fixed-top");
+          }
+        },100)
+      })
+      /*-- 页面滚动内容筛选区域吸顶结束 --*/
+      /*-- 内容分类点击筛选开始 --*/
+      $('#J_article-classify a').on("click",function(e){
+        if($(this).hasClass("current")){
+          return false;
+        }else {
+          $('#J_article-classify a').removeClass("current");
+          $(this).addClass("current");
+          // console.log($(this).context.dataset.classifyid)
+          app.classify=$(this).context.dataset.classifyid;
+          app.page=1;
+          requestdata(app.classify,app.recommend,app.page,false)
+        }
+        e.stopPropagation(); //停止事件冒泡
+      })
+      /*-- 内容分类点击筛选结束 --*/
+      /*-- 请求内容数据列表开始 --*/
+      requestdata(app.classify,app.recommend,app.page,false)//初始化进入页面默认请求
+      function requestdata(classify,recommend,page,type){
+        $.ajax({
+          type:"GET",
+          url:"{{__HOST__}}/api/articlelist?classify="+classify+"&recommend="+recommend+"&page="+page,
+          dataType:"json",
+          success:function(datajson){
+            // console.log(datajson)
+            app.count = datajson.totalPages;
+            // console.log(app)
+            var html="";
+            let data = datajson.articlelist;
+            for (let i=0;i<data.length;i++){
+              let imgurl = data[i].thumbnail;
+              let user_pic = data[i].user_pic;
+              if(!imgurl){
+                imgurl = app.imgurl;
+              }
+              html+='<div class="card fl"><div class="card-hd"></div><!-- /.card-hd --><div class="card-bd"><a target="_blank"  href="'+app.url+"?id="+data[i].id +'"><div class="card-img"><img src="'+imgurl+'" alt=""></div><!-- /.card-img --><div class="card-info"><h3 class="title ellipsis">'+data[i].title+'</h3><h4 class="keywords"><span class="key">关键字</span>'+data[i].keywords+'</h4><p class="statistics clearfix"><span class="statistics-item statistics-view" title="99人气"><i class="iconfont icon-yanjing"></i>99</span><span class="statistics-item statistics-zan" title="99赞"><i class="iconfont icon-icon"></i>99</span><span class="statistics-item statistics-comment" title="99评价"><i class="iconfont icon-pingjiaguanli"></i>99</span></p><!-- /.user --><div class="user"><span class="update-time fr">'+data[i].create_time.slice(0,10)+'</span><div class="user-avator"><img src="{{__HOST__}}/'+user_pic+'" alt=""></div><span class="user-name ellipsis" title="'+data[i].user_name+'"> '+data[i].user_name+'</span></div><!-- /.user --></div><!-- /.card-info --></div><!-- /.card-bd --><div class="card-ft"><div class="mask"><strong class="desc">'+data[i].description+' </strong></div></div><!-- /.card-ft --></div><!-- /.card -->'
+            }
+            $('#J_work-list-box')[0].innerHTML=html;
+            if(!type&&app.count!=0){
+              initjqPaginator();
+            }
+          },
+          error:function(jqXHR){
+              console.log("Error: "+jqXHR);
+          }
+        });
+      }
+      /*-- 请求内容数据列表结束 --*/
+    })
+  </script>
 </html>
