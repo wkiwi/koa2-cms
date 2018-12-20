@@ -100,7 +100,7 @@ CREATE TABLE `article` (
   `description` char(255) NOT NULL DEFAULT '' COMMENT '文章描述',
   `thumbnail` char(255) NOT NULL DEFAULT '' COMMENT '缩略图(新增)',
   `recommend` char(100) NOT NULL DEFAULT '' COMMENT '推荐分类',
-  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '文章内容',
+  `content` MEDIUMTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '文章内容',
   `type` int(1) NOT NULL DEFAULT '0' COMMENT '审核状态',
   `read_type` tinyint NOT NULL DEFAULT '0' COMMENT '阅读权限（参阅用户类型）',
   `create_time` char(30) NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '发表时间',

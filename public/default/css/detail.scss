@@ -4,7 +4,7 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-12-07 15:43:36
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-09 17:44:28
+ * @LastEditTime: 2018-12-20 16:03:06
  */
 
 $yellow: #ffd100;
@@ -12,7 +12,9 @@ $blue: #4c8dd1;
 $black: #282828;
 $red: #ff3464;
 $white: #fefefe;
-
+html,body {
+  min-width: 1200px;
+}
 .main-wrapper {
   width: 100%;
   margin-top: 20px;
@@ -87,4 +89,101 @@ $white: #fefefe;
   width: 1200px;
   margin: 0 auto;
   padding: 30px 0;
+}
+.detail-praise {
+  text-align: center;
+  margin: 30px 0;
+  .praise-box {
+    display:inline-block;
+    height: 72px;
+    width: 118px;
+    background: $yellow;
+    border-radius: 36px;
+    &:hover {
+      cursor: pointer;
+      background: #ffe056;
+    }
+    &.praised {
+      background: #ccc;
+    }
+    .iconfont {
+      display:block;
+      font-size: 28px;
+    }
+    .number {
+      display:block;
+      font-size: 18px;
+    }
+  }
+  
+}
+.comment-module{
+  width: 1200px;
+  margin: 0 auto;
+}
+.input-wrapper {
+  width: 100%;
+  height:300px;
+  overflow: hidden;
+  .input {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: #f4f4f4;
+    outline: none;
+    width: 100%;
+    height: 200px;
+    padding: 10px 20px;
+    resize:none;
+    &:focus,&:hover {
+      outline: none;
+    }
+  }
+  .submit {
+    cursor: pointer;
+    display:block;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 36px;
+    font-size: 18px;
+    background: $yellow;
+    color: $black;
+    width: 100px;
+    height: 36px;
+    border-radius: 5px;
+  }
+}
+.detail-comment-content {
+  border-top: 1px solid #f1f1f1;
+}
+.detail-comment-list {
+  padding: 20px 10px;
+}
+.comment-list-item {
+  border-bottom: 1px solid #f1f1f1;
+  padding: 30px 0;
+  &:last-child {
+    border:none;
+  }
+  .avatar-item {
+    float:left;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow:hidden;
+  }
+  .comment-item {
+    margin-left: 68px;
+  }
+  .username {
+    margin-right: 20px;
+  }
+  .comment-time {
+    color: #bbb;
+    font-size: 12px;
+  }
+  .comment-content {
+    font-size: 14px;
+    line-height: 28px;
+    margin-top: 15px;
+  }
 }

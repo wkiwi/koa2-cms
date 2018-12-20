@@ -3,8 +3,12 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-12-07 15:43:36
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-09 17:44:28
+ * @LastEditTime: 2018-12-20 16:03:06
  */
+html, body {
+  min-width: 1200px;
+}
+
 .main-wrapper {
   width: 100%;
   margin-top: 20px;
@@ -89,5 +93,121 @@
   width: 1200px;
   margin: 0 auto;
   padding: 30px 0;
+}
+
+.detail-praise {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.detail-praise .praise-box {
+  display: inline-block;
+  height: 72px;
+  width: 118px;
+  background: #ffd100;
+  border-radius: 36px;
+}
+
+.detail-praise .praise-box:hover {
+  cursor: pointer;
+  background: #ffe056;
+}
+
+.detail-praise .praise-box.praised {
+  background: #ccc;
+}
+
+.detail-praise .praise-box .iconfont {
+  display: block;
+  font-size: 28px;
+}
+
+.detail-praise .praise-box .number {
+  display: block;
+  font-size: 18px;
+}
+
+.comment-module {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.input-wrapper {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.input-wrapper .input {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: #f4f4f4;
+  outline: none;
+  width: 100%;
+  height: 200px;
+  padding: 10px 20px;
+  resize: none;
+}
+
+.input-wrapper .input:focus, .input-wrapper .input:hover {
+  outline: none;
+}
+
+.input-wrapper .submit {
+  cursor: pointer;
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  line-height: 36px;
+  font-size: 18px;
+  background: #ffd100;
+  color: #282828;
+  width: 100px;
+  height: 36px;
+  border-radius: 5px;
+}
+
+.detail-comment-content {
+  border-top: 1px solid #f1f1f1;
+}
+
+.detail-comment-list {
+  padding: 20px 10px;
+}
+
+.comment-list-item {
+  border-bottom: 1px solid #f1f1f1;
+  padding: 30px 0;
+}
+
+.comment-list-item:last-child {
+  border: none;
+}
+
+.comment-list-item .avatar-item {
+  float: left;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.comment-list-item .comment-item {
+  margin-left: 68px;
+}
+
+.comment-list-item .username {
+  margin-right: 20px;
+}
+
+.comment-list-item .comment-time {
+  color: #bbb;
+  font-size: 12px;
+}
+
+.comment-list-item .comment-content {
+  font-size: 14px;
+  line-height: 28px;
+  margin-top: 15px;
 }
 /*# sourceMappingURL=detail.css.map */

@@ -4,14 +4,16 @@
  * @Email: w_kiwi@163.com
  * @Date: 2018-12-07 15:43:36
  * @LastEditors: wkiwi
- * @LastEditTime: 2018-12-13 17:01:18
+ * @LastEditTime: 2018-12-17 17:27:33
  */
 $yellow: #ffd100;
 $blue: #4c8dd1;
 $black: #282828;
 $red: #ff3464;
 $white: #fefefe;
-
+html,body {
+  min-width: 1200px;
+}
 /* main */
 .main-wrapper {
   width: 100%;
@@ -32,6 +34,10 @@ $white: #fefefe;
     margin-right: 20px;
     border-radius: 5px;
     overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+    }
     &:last-child {
       margin-right: 0;
     }
@@ -139,6 +145,7 @@ $white: #fefefe;
 .all-work-bg {
   background: #f4f4f4;
   width: 100%;
+  min-height: 500px;
   .all-work-list {
     width: 1200px;
     margin: 0 auto;
@@ -148,6 +155,7 @@ $white: #fefefe;
 }
 .work-list-box {
     width: 100%;
+    min-height: 500px;
   .card {
     position: relative;
     top:0;
@@ -274,6 +282,7 @@ $white: #fefefe;
       height: 100%;
     }
     .desc {
+      display:block;
       width: 100%;
       height: 100%;
       overflow: hidden;
